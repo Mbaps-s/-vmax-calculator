@@ -1,1 +1,15 @@
 
+import math
+from cli.calculator import compute_vmax
+
+def test_compute_vmax_typical():
+    v = compute_vmax(300.0, 100.0, 75.0, K=0.28)
+    assert 60 <= v <= 75  # loose band for placeholder K
+
+def test_invalid_inputs():
+    try:
+        compute_vmax(0, 100, 75)
+        assert False, "Expected ValueError for zero radius"
+    except ValueError:
+        pass
+
